@@ -1,210 +1,333 @@
-// src/app/page.tsx
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Mail, Github, Linkedin, ExternalLink, Code, Database, Globe, AlertTriangle } from "lucide-react"
 
-import type { Metadata } from 'next'
-import { Mail, Briefcase, Heart } from 'lucide-react'
-import Image from 'next/image'
-
-export const metadata: Metadata = {
-  title: "Alanis Web Dev - Full Stack Developer | Proyecto Clínica EndoGrant",
-  description: "Sitio web desarrollado por Alanis Web Dev (Full Stack Developer) para Clínica EndoGrant. Proyecto no publicado por falta de acuerdo comercial. Desarrollo web profesional disponible.",
-  keywords: ["desarrollo web", "full stack developer", "Next.js", "React", "TypeScript", "clínica dental", "Alanis Web Dev"],
-  alternates: {
-    canonical: 'https://alanis.dev',
-    languages: {
-      'es-MX': 'https://alanis.dev',
-    },
-  },
-  authors: [
-    { name: "Alanis Web Dev", url: "https://alanis.dev" }
-  ],
-  openGraph: {
-    title: "Alanis Web Dev - Full Stack Developer | Proyecto Clínica EndoGrant",
-    description: "Sitio web desarrollado por Alanis Web Dev para Clínica EndoGrant. Desarrollo web profesional disponible.",
-    url: 'https://alanis.dev',
-    siteName: 'Alanis Web Dev',
-    images: [
-      {
-        url: '/alanis-logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Alanis Web Dev Logo',
-      },
-    ],
-    locale: 'es_MX',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: "Alanis Web Dev - Full Stack Developer | Proyecto Clínica EndoGrant",
-    description: "Sitio web desarrollado por Alanis Web Dev para Clínica EndoGrant. Desarrollo web profesional disponible.",
-    images: ['/alanis-logo.png'],
-  },
-}
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-background">
+      {/* Schema Markup para SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Emmanuel Alanis",
+            "jobTitle": "Desarrollador Full Stack",
+            "description": "Desarrollador Full Stack especializado en Next.js, React y TypeScript",
+            "url": "https://alanis.dev",
+            "sameAs": [
+              "https://github.com/ealanisln",
+              "https://www.linkedin.com/in/ealanis/"
+            ],
+            "knowsAbout": [
+              "Next.js",
+              "React",
+              "TypeScript",
+              "Node.js",
+              "PostgreSQL",
+              "Tailwind CSS",
+              "Desarrollo Web",
+              "Full Stack Development"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Alanis Web Dev"
+            },
+            "image": "https://alanis.dev/logo.webp",
+            "email": "emmanuel@alanis.dev",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "MX"
+            }
+          })
+        }}
+      />
+
+      {/* Schema Markup para la organización */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Alanis Web Dev",
+            "description": "Empresa de desarrollo web especializada en soluciones digitales modernas",
+            "url": "https://alanis.dev",
+            "logo": "https://alanis.dev/logo.webp",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "email": "emmanuel@alanis.dev"
+            },
+            "sameAs": [
+              "https://github.com/ealanisln",
+              "https://www.linkedin.com/in/ealanis/"
+            ]
+          })
+        }}
+      />
+
+      {/* Schema Markup para el proyecto Clínica EndoGrant */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            "name": "Proyecto Clínica EndoGrant",
+            "description": "Sitio web completo desarrollado para clínica dental especializada",
+            "creator": {
+              "@type": "Person",
+              "name": "Emmanuel Alanis"
+            },
+            "dateCreated": "2024",
+            "genre": "Sitio Web",
+            "keywords": ["clínica dental", "sistema de citas", "panel administrativo", "Next.js", "React"],
+            "image": "https://alanis.dev/images/clinica-dental-og.jpg"
+          })
+        }}
+      />
+
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
-              <a 
-                href="https://alanis.dev" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
-              >
-                <Image
-                  src="/alanis-logo.png"
-                  alt="Alanis Web Dev Logo"
-                  width={40}
-                  height={40}
-                  className="w-10 h-10"
-                />
-                <span className="text-xl font-bold text-slate-900">Alanis Web Dev</span>
-              </a>
+      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <Code className="w-5 h-5 text-primary-foreground" aria-hidden="true" />
             </div>
-            <div className="flex items-center space-x-4">
-              <a
-                href="mailto:emmanuel@alanis.dev"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-colors"
-              >
-                <Mail className="w-4 h-4 mr-2" />
-                Contactar
-              </a>
-            </div>
+            <span className="text-xl font-bold text-foreground">Alanis Web Dev</span>
           </div>
+          <nav className="hidden md:flex items-center space-x-6" role="navigation" aria-label="Navegación principal">
+            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
+              Sobre mí
+            </a>
+            <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">
+              Proyectos
+            </a>
+            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+              Contacto
+            </a>
+          </nav>
+          <Button asChild>
+            <a href="#contact">Trabajemos juntos</a>
+          </Button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-8">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Proyecto{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Clínica EndoGrant
-              </span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Sitio web completo desarrollado por{' '}
-              <a 
-                href="https://alanis.dev" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="font-semibold text-blue-600 hover:text-blue-700 underline"
-              >
-                Alanis Web Dev
-              </a>{' '}
-              (Full Stack Developer)
-            </p>
+      <section className="py-20 px-4" role="banner" aria-labelledby="hero-title">
+        <div className="container mx-auto text-center max-w-4xl">
+          <h1 id="hero-title" className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Transformando Ideas en Soluciones Digitales
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+            Desarrollador Full Stack especializado en crear aplicaciones web modernas y escalables con Next.js, React y
+            TypeScript
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" asChild>
+              <a href="#projects">Ver mi trabajo</a>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a href="#contact">Contactar</a>
+            </Button>
           </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
-            <div className="text-left">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-                <Briefcase className="w-6 h-6 mr-3 text-blue-600" />
-                Estado del Proyecto
-              </h2>
-              <div className="space-y-4">
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                  <p className="text-red-800 font-medium">
-                    ⚠️ Proyecto no publicado por falta de acuerdo comercial
-                  </p>
-                </div>
-  
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 bg-muted/30" aria-labelledby="about-title">
+        <div className="container mx-auto max-w-6xl">
+          <h2 id="about-title" className="text-3xl md:text-4xl font-bold text-center mb-12">Sobre mí</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                Soy un desarrollador Full Stack apasionado por crear experiencias digitales excepcionales. Me
+                especializo en tecnologías modernas como Next.js, React, TypeScript y Tailwind CSS.
+              </p>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                Mi enfoque se centra en entregar soluciones de alta calidad que no solo cumplan con los requisitos
+                técnicos, sino que también proporcionen una experiencia de usuario excepcional.
+              </p>
+              <div className="flex flex-wrap gap-2" role="list" aria-label="Tecnologías dominadas">
+                <Badge variant="secondary" role="listitem">Next.js 14</Badge>
+                <Badge variant="secondary" role="listitem">React 18</Badge>
+                <Badge variant="secondary" role="listitem">TypeScript</Badge>
+                <Badge variant="secondary" role="listitem">Tailwind CSS</Badge>
+                <Badge variant="secondary" role="listitem">Node.js</Badge>
+                <Badge variant="secondary" role="listitem">PostgreSQL</Badge>
               </div>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              <Card>
+                <CardHeader className="pb-3">
+                  <Globe className="w-8 h-8 text-primary mb-2" aria-hidden="true" />
+                  <CardTitle className="text-lg">Frontend</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">Interfaces modernas y responsivas</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="pb-3">
+                  <Database className="w-8 h-8 text-primary mb-2" aria-hidden="true" />
+                  <CardTitle className="text-lg">Backend</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">APIs robustas y escalables</p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
-            Tecnologías Utilizadas
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: 'Next.js 14', description: 'Framework React con App Router' },
-              { name: 'React 18', description: 'Biblioteca de interfaz de usuario' },
-              { name: 'TypeScript', description: 'Tipado estático para JavaScript' },
-              { name: 'Tailwind CSS', description: 'Framework CSS utility-first' },
-            ].map((tech) => (
-              <div key={tech.name} className="text-center p-6 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
-                <h3 className="font-semibold text-slate-900 mb-2">{tech.name}</h3>
-                <p className="text-sm text-slate-600">{tech.description}</p>
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-4" aria-labelledby="projects-title">
+        <div className="container mx-auto max-w-6xl">
+          <h2 id="projects-title" className="text-3xl md:text-4xl font-bold text-center mb-12">Proyectos Destacados</h2>
+
+          {/* Featured Project - Clínica EndoGrant */}
+          <Card className="mb-8 border-2 border-primary/20">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <div>
+                  <CardTitle className="text-2xl mb-2">Proyecto Clínica EndoGrant</CardTitle>
+                  <CardDescription className="text-lg">
+                    Sitio web completo desarrollado para clínica dental especializada
+                  </CardDescription>
+                </div>
+                <div className="flex items-center gap-2 text-amber-600">
+                  <AlertTriangle className="w-5 h-5" aria-hidden="true" />
+                  <Badge variant="outline" className="border-amber-600 text-amber-600">
+                    No publicado
+                  </Badge>
+                </div>
               </div>
-            ))}
-          </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="font-semibold mb-3 text-lg">Características del proyecto:</h4>
+                  <ul className="space-y-2 text-muted-foreground mb-6" role="list" aria-label="Características del proyecto">
+                    <li role="listitem">• Sistema de citas online integrado</li>
+                    <li role="listitem">• Panel administrativo completo</li>
+                    <li role="listitem">• Diseño responsive y moderno</li>
+                    <li role="listitem">• Optimización SEO avanzada</li>
+                    <li role="listitem">• Integración con sistemas de pago</li>
+                  </ul>
+
+                  <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 mb-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <AlertTriangle className="w-4 h-4 text-amber-600" aria-hidden="true" />
+                      <span className="font-medium text-amber-800 dark:text-amber-200">Estado del Proyecto</span>
+                    </div>
+                    <p className="text-sm text-amber-700 dark:text-amber-300">
+                      Proyecto completado pero no publicado por falta de acuerdo comercial. Disponible para demostración
+                      bajo solicitud.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-3 text-lg">Tecnologías utilizadas:</h4>
+                  <div className="grid grid-cols-2 gap-3 mb-6" role="list" aria-label="Tecnologías utilizadas">
+                    <div className="flex items-center gap-2" role="listitem">
+                      <div className="w-2 h-2 bg-primary rounded-full" aria-hidden="true"></div>
+                      <span className="text-sm">Next.js 14</span>
+                    </div>
+                    <div className="flex items-center gap-2" role="listitem">
+                      <div className="w-2 h-2 bg-primary rounded-full" aria-hidden="true"></div>
+                      <span className="text-sm">React 18</span>
+                    </div>
+                    <div className="flex items-center gap-2" role="listitem">
+                      <div className="w-2 h-2 bg-primary rounded-full" aria-hidden="true"></div>
+                      <span className="text-sm">TypeScript</span>
+                    </div>
+                    <div className="flex items-center gap-2" role="listitem">
+                      <div className="w-2 h-2 bg-primary rounded-full" aria-hidden="true"></div>
+                      <span className="text-sm">Tailwind CSS</span>
+                    </div>
+                  </div>
+
+                  <blockquote className="text-sm text-muted-foreground italic">
+                    &ldquo;Este proyecto demuestra mi capacidad para crear soluciones completas y profesionales, desde el
+                    diseño hasta la implementación técnica.&rdquo;
+                  </blockquote>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-purple-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">
-            ¿Buscas desarrollo web profesional?
-          </h2>
-          <p className="text-xl text-slate-600 mb-8">
-            Contáctame para discutir tu próximo proyecto
+      <section id="contact" className="py-20 px-4 bg-muted/30" aria-labelledby="contact-title">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 id="contact-title" className="text-3xl md:text-4xl font-bold mb-6">¿Listo para tu próximo proyecto?</h2>
+          <p className="text-xl text-muted-foreground mb-12">
+            Contacta conmigo para discutir cómo puedo ayudarte a llevar tu idea al siguiente nivel
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:emmanuel@alanis.dev"
-              className="inline-flex items-center px-8 py-3 border border-transparent text-lg font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              emmanuel@alanis.dev
-            </a>
-            <a
-              href="https://www.alanis.dev/portafolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-3 border border-slate-300 text-lg font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-colors"
-            >
-              <Briefcase className="w-5 h-5 mr-2" />
-              Visitar Portfolio
-            </a>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Mail className="w-8 h-8 text-primary mx-auto mb-2" aria-hidden="true" />
+                <CardTitle>Email</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <a href="mailto:emmanuel@alanis.dev" className="text-primary hover:underline">
+                  emmanuel@alanis.dev
+                </a>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Github className="w-8 h-8 text-primary mx-auto mb-2" aria-hidden="true" />
+                <CardTitle>GitHub</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <a href="https://github.com/ealanisln" className="text-primary hover:underline flex items-center justify-center gap-1">
+                  Ver repositorios <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                </a>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Linkedin className="w-8 h-8 text-primary mx-auto mb-2" aria-hidden="true" />
+                <CardTitle>LinkedIn</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <a href="https://www.linkedin.com/in/ealanis/" className="text-primary hover:underline flex items-center justify-center gap-1">
+                  Conectar <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                </a>
+              </CardContent>
+            </Card>
           </div>
+
+          <Button size="lg" asChild>
+            <a href="mailto:emmanuel@alanis.dev">Iniciar conversación</a>
+          </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <a 
-                href="https://alanis.dev" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
-              >
-                <Image
-                  src="/alanis-logo.png"
-                  alt="Alanis Web Dev Logo"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8"
-                />
-                <span className="text-lg font-semibold">Alanis Web Dev</span>
-              </a>
+      <footer className="border-t py-8 px-4" role="contentinfo">
+        <div className="container mx-auto text-center">
+          <div className="flex items-center justify-center space-x-2 mb-4">
+            <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
+              <Code className="w-4 h-4 text-primary-foreground" aria-hidden="true" />
             </div>
-            <div className="text-center md:text-right">
-              <p className="text-slate-400 mb-2">
-                © 2024 Alanis Web Dev. Todos los derechos reservados.
-              </p>
-              <p className="text-sm text-slate-500">
-                Desarrollado con <Heart className="inline w-4 h-4 text-red-500" /> y Next.js
-              </p>
-            </div>
+            <span className="font-bold">Alanis Web Dev</span>
           </div>
+          <p className="text-muted-foreground text-sm mb-2">© 2024 Alanis Web Dev. Todos los derechos reservados.</p>
+          <p className="text-muted-foreground text-sm">Desarrollado con ❤️ y Next.js</p>
         </div>
       </footer>
-    </main>
+    </div>
   )
 }

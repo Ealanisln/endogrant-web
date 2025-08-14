@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://alanis.dev/sitemap.xml
+
+# Crawl-delay para ser respetuoso con el servidor
+Crawl-delay: 1
+
+# Permitir acceso a recursos importantes
+Allow: /images/
+Allow: /logo.webp
+Allow: /favicon.ico
+
+# Bloquear archivos innecesarios
+Disallow: /_next/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /sitemap.xml
+Disallow: /robots.txt
+
+# Configuración específica para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Configuración específica para Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

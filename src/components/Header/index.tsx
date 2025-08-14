@@ -7,8 +7,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetClose
-} from "@/src/components/ui/sheet";
-import { Button } from "@/src/components/ui/button";
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { Phone, Search, Menu, Calendar } from "lucide-react";
 
 export default function Header() {
