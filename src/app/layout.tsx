@@ -15,15 +15,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Endogrant | Clínica Dental Especializada",
+  title: "Alanis Web Dev - Full Stack Developer | Portfolio",
   description:
-    "Endogrant, tu clínica dental de confianza. Ofrecemos servicios de odontología general, ortodoncia, implantes y más. Cuidamos tu sonrisa con profesionalismo y experiencia.",
+    "Alanis Web Dev es un Full Stack Developer especializado en Next.js, React, TypeScript y desarrollo web moderno. Portfolio y proyectos disponibles.",
   keywords: [
-    "Endogrant",
-    "clínica dental",
-    "dentista",
-    "odontología",
-    "servicios dentales",
+    "Alanis Web Dev",
+    "Full Stack Developer",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "desarrollo web",
+    "portfolio",
   ],
   robots: {
     index: true,
@@ -42,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
